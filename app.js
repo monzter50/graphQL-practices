@@ -5,6 +5,10 @@ const { makeExecutableSchema } = require('graphql-tools');
 const { readFileSync } = require('fs');
 const { join } = require('path');
 const resolvers = require('./lib/resolvers.js')
+
+
+const port = process.env.port || 4000
+// definiendo el esquema
 const typeDefs = readFileSync(
   join(__dirname,'lib','schema.graphql'),
   'utf-8'
@@ -17,4 +21,4 @@ app.use('/graphql', graphqlHTTP({
   rootValue: resolvers,
   graphiql: true,
 }));
-app.listen(4000, () => console.log('Now browse to localhost:4000/graphql'));
+app.listen(port, () => console.log(`Now browse to localhost${port}:/graphql`));
