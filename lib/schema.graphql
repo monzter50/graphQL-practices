@@ -1,0 +1,30 @@
+type Course {
+  _id: ID!
+  name: String
+  teacher: String
+  description: String
+  topic: String
+}
+
+input CourseInput {
+  name: String
+  teacher: String
+  description: String
+  topic: String
+}
+
+type Query {
+  "Devuelve todos cursos"
+  getCourses: [Course]
+  "Devuelve un curso"
+  getCourse(id: ID!): Course
+}
+
+type Mutation {
+  "Crea un curso"
+  createCourse(input: CourseInput!): Course
+  "Edita un curso"
+  updateCourse(_id: ID!, input: CourseInput!): Course
+  "Elimina el curso"
+  deleteCourse(_id: ID!): Course
+}
