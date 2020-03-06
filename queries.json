@@ -1,17 +1,28 @@
 mutation {
-    updateCourse(_id:"5e61b9b5dff3ba1990cb5a16",input:{
-      name:"POO",
-      teacher:"Mariela",
-      description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan justo eget eleifend tempus.",
-      topic:"Programacion"
-    }){
-      _id,
-      name,
-      description,
-      topic
-    }
+  createCourse(input:{
+    name:"POO",
+    teacher:"Mariela",
+    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan justo eget eleifend tempus.",
+    topic:"Programacion"
+  }){
+    _id,
+    name,
+    description,
+    topic
+  }
 }
-
+mutation {
+  createProject(input:{
+    name:"Kukua",
+    description:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque accumsan justo eget eleifend tempus.",
+    url:"https://kukuarestaurantpuntacana.com/"
+  }){
+    _id,
+    name,
+    description,
+    url
+  }
+}
 {
     getCourses{
       _id,

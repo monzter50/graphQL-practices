@@ -3,7 +3,20 @@ type Course {
   name: String
   teacher: String
   description: String
-  topic: String
+  topic: String,
+  project:[Project]
+}
+
+type Project {
+  _id: ID!
+  name: String
+  description: String
+  url:String
+}
+input ProjectInput {
+  name:String,
+  description:String,
+  url:String
 }
 
 input CourseInput {
@@ -18,6 +31,10 @@ type Query {
   getCourses: [Course]
   "Devuelve un curso"
   getCourse(id: ID!): Course
+  "Devuelve todos proyectos"
+  getProjects: [Project]
+  "Devuelve un prpyecto"
+  getProject(id: ID!): Project
 }
 
 type Mutation {
@@ -25,6 +42,16 @@ type Mutation {
   createCourse(input: CourseInput!): Course
   "Edita un curso"
   updateCourse(_id: ID!, input: CourseInput!): Course
-  "Elimina el curso"
+  "Elimina un curso"
   deleteCourse(_id: ID!): Course
+  "Se agega un proyecto en el curso"
+  addProject(_courseID:ID!,_projectID:ID!):Course
+
+  "Crea un proyecto"
+  createProject(input: ProjectInput!): Project
+  "Edita un proyecto"
+  updateProject(_id: ID!, input: ProjectInput!): Project
+  "Elimina un proyecto"
+  deleteProject(_id: ID!): Project
+
 }
