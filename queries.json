@@ -39,11 +39,16 @@ mutation {
   addProject(_courseID:"5e669727c2307b4088668eec",_projectID:"5e62b6d2c414366b28a1c00f"){
     name,
     description,
-    topic,
-    project {
-      name
-      description
-      url
-    }
+    topic
   }
 }
+{getCourses{
+  _id,
+  name,
+  topic,
+  project{
+    _id,
+    name,
+    url
+  }
+}}
