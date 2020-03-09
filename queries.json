@@ -24,11 +24,26 @@ mutation {
   }
 }
 {
-    getCourses{
-      _id,
-      name,
-      description,
-      teacher
+	getCourses{
+    _id,
+    name,
+    topic
+  },
+   getCourse(id:"5e62b61e41066f76a4611fc4"){
+    name,
+    topic
+  }
+ 
+}
+mutation {
+  addProject(_courseID:"5e669727c2307b4088668eec",_projectID:"5e62b6d2c414366b28a1c00f"){
+    name,
+    description,
+    topic,
+    project {
+      name
+      description
+      url
     }
   }
-  
+}
