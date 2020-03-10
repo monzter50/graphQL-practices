@@ -1,3 +1,8 @@
+enum Level {
+  basico
+  intermedio
+  avanzando
+}
 type Course {
   _id: ID!
   name: String
@@ -5,6 +10,7 @@ type Course {
   description: String
   topic: String,
   project:[Project]
+  level:[Level]!
 }
 
 type Project {
@@ -23,7 +29,8 @@ input CourseInput {
   name: String
   teacher: String
   description: String
-  topic: String
+  topic: String,
+  level:Level
 }
 
 type Query {
