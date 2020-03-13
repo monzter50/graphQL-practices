@@ -3,7 +3,12 @@ enum Level {
   intermedio
   avanzando
 }
-type Course {
+interface Event{
+  _id:ID!
+  name:String
+  description:String
+}
+type Course{
   _id: ID!
   name: String
   teacher: String
@@ -13,12 +18,21 @@ type Course {
   level:[Level]!
 }
 
-type Project {
+type Project implements Event{
   _id: ID!
   name: String
   description: String
   url:String
 }
+
+type Meetup implements Event{
+  _id:ID!,
+  name:String,
+  description:String,
+  topic:String,
+  banner:String
+}
+
 input ProjectInput {
   name:String,
   description:String,
@@ -39,9 +53,9 @@ type Query {
   "Devuelve un curso"
   getCourse(id: ID!): Course
   "Devuelve todos proyectos"
-  getProjects: [Project]
+  getEvents: [Event]
   "Devuelve un prpyecto"
-  getProject(id: ID!): Project
+  getEvent(id: ID!): Event
 }
 
 type Mutation {
@@ -55,10 +69,10 @@ type Mutation {
   addProject(_courseID:ID!,_projectID:ID!):Course
 
   "Crea un proyecto"
-  createProject(input: ProjectInput!): Project
+  createEvent(input: ProjectInput!): Project
   "Edita un proyecto"
-  updateProject(_id: ID!, input: ProjectInput!): Project
+  updateEvent(_id: ID!, input: ProjectInput!): Project
   "Elimina un proyecto"
-  deleteProject(_id: ID!): Project
+  deleteEvent(_id: ID!): Project
 
 }
